@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.9.1" />
+    <PackageReference Include="LanguageExt.Core" Version="4.4.8" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\01.Domain\Entities\Entities.csproj" />
+    <ProjectReference Include="..\..\01.Domain\Events\Events.csproj" />
+    <ProjectReference Include="..\..\01.Domain\Interfaces\Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
