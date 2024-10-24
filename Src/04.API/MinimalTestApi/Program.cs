@@ -4,7 +4,6 @@ using Dal;
 
 namespace MinimalTest.Api
 {
-
     public class Program
     {
         public static void Main(string[] args)
