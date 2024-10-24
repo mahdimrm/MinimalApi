@@ -1,6 +1,9 @@
 using ApplicationService;
+using ApplicationService.Behaviours;
 using Carter;
 using Dal;
+using MediatR;
+using System.Reflection;
 
 namespace MinimalTest.Api
 {
@@ -21,7 +24,6 @@ namespace MinimalTest.Api
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddCarter();
-
 
             var app = builder.Build();
 

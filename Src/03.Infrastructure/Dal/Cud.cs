@@ -3,6 +3,7 @@ using Interfaces.Common;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using System.Linq.Expressions;
+using System.Net.Sockets;
 
 namespace Dal
 {
@@ -74,6 +75,9 @@ namespace Dal
             try
             {
                 var entity = await _dbset.FindAsync(Guid);
+                if (entity is null)
+                    return false;
+
                 _dbset.Remove(entity);
                 return await SaveAsync();
             }

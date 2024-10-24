@@ -18,17 +18,17 @@ namespace Dal
             _dbset = context.Set<T>();
         }
 
-        public async Task<T?> GetAsync(object? id)
+        //Get
+        public async Task<T?> FindAsync(object? id)
            => await _dbset.FindAsync(id);
 
-
-        public async Task<T?> FirstOrDefault(Expression<Func<T, bool>> expression)
+        public async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> expression)
             => await _dbset.FirstOrDefaultAsync(expression);
 
-        //Get Data With Out Pagination
 
+        #region GetDataWithOutPagination
         public async Task<IEnumerable<T>> GetAllAsync()
-             => await _dbset.AsNoTracking().ToListAsync();
+           => await _dbset.AsNoTracking().ToListAsync();
 
         public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression)
             => await _dbset.AsNoTracking().Where(expression).ToListAsync();
@@ -40,10 +40,11 @@ namespace Dal
         public async Task<IEnumerable<TType>> GetAllAsync<TType>(Expression<Func<T, bool>> expression, Expression<Func<T, TType>> select) where TType : class
             => await _dbset.Where(expression).Select(select).ToListAsync();
 
-        //Get Data With Paginated 
+        #endregion
 
+        #region Pagination_Purpose
         public ApiPagedList<T> GetPagedList(int pageNumber, int pageSize)
-            => new ApiPagedList<T>(pageNumber, pageSize, _dbset);
+           => new ApiPagedList<T>(pageNumber, pageSize, _dbset);
 
         public ApiPagedList<T> GetPaginated(int pageNumber, int pageSize, Expression<Func<T, bool>> expression)
             => new ApiPagedList<T>(pageNumber, pageSize, _dbset.Where(expression));
@@ -60,5 +61,11 @@ namespace Dal
 
         public ApiPagedList<TType> GetPagedList<TType>(int pageNumber, int pageSize, Expression<Func<T, TType>> select) where TType : class
             => new ApiPagedList<TType>(pageNumber, pageSize, _dbset.Select(select));
+
+        public Task<T> GetAsync(object? id)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

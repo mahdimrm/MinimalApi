@@ -20,7 +20,7 @@ public class UpdateTodoItemCommandHandler : IRequestHandler<UpdateTodoItemComman
 
     public async Task<Either<ServiceStatus, TodoItem>> Handle(UpdateTodoItemCommand request, CancellationToken cancellationToken)
     {
-        TodoItem todo = await _todoItemQuery.GetAsync(request.Id);
+        TodoItem todo = await _todoItemQuery.FindAsync(request.Id);
         if (todo is null)
             return ServiceStatus.NotFound;
 

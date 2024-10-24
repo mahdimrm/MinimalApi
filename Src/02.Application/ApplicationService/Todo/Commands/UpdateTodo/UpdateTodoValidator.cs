@@ -1,7 +1,7 @@
 ﻿using ApplicationService.Todo.Commands;
 using FluentValidation;
 
-namespace CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem;
+namespace ApplicationService.Todo.Commands.UpdateTodo;
 
 public class UpdateTodoValidator : AbstractValidator<UpdateTodoItemCommand>
 {

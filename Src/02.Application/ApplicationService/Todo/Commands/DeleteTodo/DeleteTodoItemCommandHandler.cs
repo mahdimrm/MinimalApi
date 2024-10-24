@@ -22,7 +22,7 @@ public class DeleteTodoItemCommandHandler : IRequestHandler<DeleteTodoItemComman
 
     public async Task<Either<ServiceStatus, TodoItem>> Handle(DeleteTodoItemCommand request, CancellationToken cancellationToken)
     {
-        var entity = await _todoItemquery.GetAsync(request.Id);
+        var entity = await _todoItemquery.FindAsync(request.Id);
 
         if (entity is null)
             return ServiceStatus.NotFound;

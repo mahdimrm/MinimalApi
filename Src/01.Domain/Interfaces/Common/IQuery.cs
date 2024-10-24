@@ -7,8 +7,8 @@ namespace Interfaces.Common
     public interface IQuery<T> where T : BaseEntity
     {
         //Get
-        Task<T> GetAsync(object? id);
-        Task<T> FirstOrDefault(Expression<Func<T, bool>> expression);
+        Task<T> FindAsync(object? id);
+        Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> expression);
 
         // Get Data With Out Pagination
         Task<IEnumerable<T>> GetAllAsync();

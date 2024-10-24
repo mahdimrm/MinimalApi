@@ -1,5 +1,4 @@
-﻿
-namespace ApplicationService.Todo.Queries.GetTodo;
+﻿namespace ApplicationService.Todo.Queries.GetTodo;
 
 public record GetTodoQuery : IRequest<IEnumerable<TodosListDto>>
 {
